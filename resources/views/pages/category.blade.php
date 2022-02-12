@@ -37,8 +37,12 @@
                             <tr>
                                 <td class="text-center">{{ $data->category_name }}</td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                                    <form action="{{ route('category.destroy',$data->id) }}" method="post" >
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="{{ route('category.edit',$data->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

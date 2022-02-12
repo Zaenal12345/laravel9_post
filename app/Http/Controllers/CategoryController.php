@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $category = Category::orderBy('id','DESC')->get();
         $data = [
             'category' => $category
         ];
@@ -41,11 +41,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'category_name' => $request->category_name
+            'category_name' => $request->nama_kategori
         ];
         Category::create($data);
 
-        return redirect()->route('category');
+        return redirect()->route('category.index');
     }
     
     /**
@@ -85,11 +85,11 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'category_name' => $request->category_name
+            'category_name' => $request->nama_kategori
         ];
         Category::where('id',$id)->update($data);
 
-        return redirect()->route('category');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -103,7 +103,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        return redirect()->route('category');
+        return redirect()->route('category.index');
     }
 
 }
