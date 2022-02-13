@@ -20,7 +20,7 @@
             </div>
         </div>
         <!--end breadcrumb-->
-        <form action="{{ route('category.update', $category->id) }}" method="post">
+        <form action="{{ route('category.update', $category->id) }}" method="post" id="categoryForm">
         @csrf
         @method('PUT')
         
@@ -45,3 +45,19 @@
 </div>
 <!--end page wrapper -->
 @endsection
+
+@push('custom-script')
+<script>
+    $("#categoryForm").validate({
+        rules: {
+            nama_kategori: {
+                required: true
+            }
+        },
+        messages: {
+            nama_kategori: "Nama kategori harus diisi."
+        }
+
+    });
+</script>
+@endpush

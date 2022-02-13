@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
 	@include('components/css_component')
+	@stack('custom-css')
 	<title>Syndron - Bootstrap5 Admin Template</title>
 </head>
 
@@ -139,7 +140,7 @@
 	<!--plugins-->
 	<script src="{{ asset('template/assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('template/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-	<script src="{{ asset('template/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+	<!-- <script src="{{ asset('template/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script> -->
 	<script src="{{ asset('template/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
 	<script src="{{ asset('template/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('template/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
@@ -147,6 +148,7 @@
 	<script src="{{ asset('template/assets/js/index.js') }}"></script>
 	<!--app JS-->
 	<script src="{{ asset('template/assets/js/app.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
 	@stack('custom-script')
 	
 </body>

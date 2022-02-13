@@ -15,3 +15,8 @@
 <link rel="stylesheet" href="{{ asset('template/assets/css/dark-theme.css') }}" />
 <link rel="stylesheet" href="{{ asset('template/assets/css/semi-dark.css') }}" />
 <link rel="stylesheet" href="{{ asset('template/assets/css/header-colors.css') }}" />
+<style>
+    .error{
+        color: red;
+    }
+</style>
