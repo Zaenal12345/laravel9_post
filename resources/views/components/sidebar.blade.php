@@ -31,7 +31,7 @@
                 </li>
                 <li> <a href="{{ route('good.index') }}"><i class="bx bx-right-arrow-alt"></i>Barang</a>
                 </li>
-                <li> <a href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>Stok</a>
+                <li> <a href="{{ route('stock.index') }}"><i class="bx bx-right-arrow-alt"></i>Stok</a>
                 </li>
             </ul>
         </li>
