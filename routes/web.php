@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('/category', CategoryController::class);
+Route::resource('/good', GoodController::class);

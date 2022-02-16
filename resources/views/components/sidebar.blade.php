@@ -29,7 +29,7 @@
             <ul>
                 <li> <a href="{{ route('category.index') }}"><i class="bx bx-right-arrow-alt"></i>Kategori</a>
                 </li>
-                <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Barang</a>
+                <li> <a href="{{ route('good.index') }}"><i class="bx bx-right-arrow-alt"></i>Barang</a>
                 </li>
                 <li> <a href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>Stok</a>
                 </li>

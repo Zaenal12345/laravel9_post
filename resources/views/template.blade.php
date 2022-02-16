@@ -149,7 +149,13 @@
 	<!--app JS-->
 	<script src="{{ asset('template/assets/js/app.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+	<script>
+		$(function(){
+			$('.alert-message').delay('5000').fadeOut('slow')
+		})
+	</script>
 	@stack('custom-script')
+	
 	
 </body>
 

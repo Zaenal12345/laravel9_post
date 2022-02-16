@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Good;
 use App\Models\Category;
 
-class CategoryController extends Controller
+class GoodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::orderBy('id','DESC')->get();
+        $goods = Good::with('categories')->get();
         $data = [
-            'category' => $category
+            'goods' => $goods
         ];
 
-        return view('pages/category', $data);
+        return view('pages/goods',$data);
     }
 
     /**
@@ -29,9 +30,14 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('pages/category_add');
+        $category = Category::all();
+        $data = [
+            'category' => $category
+        ];
+
+        return view('pages/goods_add',$data);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,13 +47,18 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'category_name' => $request->nama_kategori
+            'category_id' => $request->category_id,
+            'goods_name' => $request->goods_name,
+            'unit' => $request->unit,
+            'price' => $request->price,
+            'mininum_stock' => $request->mininum_stock,
+            'expired_date' => $request->expired_date,
         ];
-        Category::create($data);
+        Good::create($data);
 
-        return redirect()->route('category.index')->with('message','Data berhasil dimasukkan');
+        return redirect()->route('good.index')->with('message','Data berhasil dimasukkan');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -58,7 +69,7 @@ class CategoryController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -67,12 +78,14 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
+        $category = Category::all();
+        $goods = Good::findOrFail($id);
         $data = [
-            'category' => $category
+            'category' => $category,
+            'goods' => $goods
         ];
 
-        return view('pages/category_edit',$data);
+        return view('pages/goods_edit',$data);
     }
 
     /**
@@ -85,11 +98,16 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'category_name' => $request->nama_kategori
+            'category_id' => $request->category_id,
+            'goods_name' => $request->goods_name,
+            'unit' => $request->unit,
+            'price' => $request->price,
+            'mininum_stock' => $request->mininum_stock,
+            'expired_date' => $request->expired_date,
         ];
-        Category::where('id',$id)->update($data);
+        Good::where('id',$id)->update($data);
 
-        return redirect()->route('category.index')->with('message','Data berhasil diubah');
+        return redirect()->route('good.index')->with('message','Data berhasil diubah');
     }
 
     /**
@@ -100,10 +118,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
+        $goods = Good::findOrFail($id);
+        $goods->delete();
 
-        return redirect()->route('category.index')->with('message','Data berhasil dihapus');
+        return redirect()->route('good.index')->with('message','Data berhasil dihapus');
     }
-
 }
